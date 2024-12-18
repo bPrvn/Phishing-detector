@@ -14,8 +14,8 @@
                 <img src="{{ url_for('static', filename='images/Phis.png') }}" 
                      alt="PhishingShield" 
                      class="h-12 w-auto mx-auto mb-4">
-                <h2 class="text-2xl font-bold text-gray-900">Sign in to PhishingShield</h2>
-                <p class="mt-2 text-sm text-gray-600">Access advanced phishing detection tools</p>
+                <h2 class="text-2xl font-bold text-gray-900" id="formTitle">Sign in to PhishingShield</h2>
+                <p class="mt-2 text-sm text-gray-600" id="formSubtitle">Access advanced phishing detection tools</p>
             </div>
 
             {% if error %}
@@ -24,7 +24,7 @@
             </div>
             {% endif %}
 
-            <form action="/login" method="POST" class="space-y-6">
+            <form id="authForm" action="/login" method="POST" class="space-y-6">
                 <!-- Email Input -->
                 <div>
                     <label for="email" class="block text-sm font-medium text-gray-700">
@@ -45,73 +45,82 @@
                     <label for="password" class="block text-sm font-medium text-gray-700">
                         Password
                     </label>
-                    <div class="relative">
-                        <input 
-                            type="password" 
-                            name="password" 
-                            id="password"
-                            required 
-                            class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 text-gray-900"
-                            placeholder="Enter your password"
-                        >
-                        <button 
-                            type="button"
-                            onclick="togglePassword()"
-                            class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
-                        >
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                            </svg>
-                        </button>
-                    </div>
+                    <input 
+                        type="password" 
+                        name="password" 
+                        id="password"
+                        required 
+                        class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 text-gray-900"
+                        placeholder="Enter your password"
+                    >
+                </div>
+
+                <!-- Confirm Password (hidden by default) -->
+                <div id="confirmPasswordDiv" style="display: none;">
+                    <label for="confirmPassword" class="block text-sm font-medium text-gray-700">
+                        Confirm Password
+                    </label>
+                    <input 
+                        type="password" 
+                        name="confirmPassword" 
+                        id="confirmPassword"
+                        class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 text-gray-900"
+                        placeholder="Confirm your password"
+                    >
                 </div>
 
                 <!-- Submit Button -->
                 <button 
                     type="submit" 
+                    id="submitButton"
                     class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                 >
                     Sign in
                 </button>
             </form>
 
-            <!-- Additional Links -->
-            <div class="mt-6">
-                <div class="relative">
-                    <div class="absolute inset-0 flex items-center">
-                        <div class="w-full border-t border-gray-300"></div>
-                    </div>
-                    <div class="relative flex justify-center text-sm">
-                        <span class="px-2 bg-white text-gray-500">Or continue with</span>
-                    </div>
-                </div>
-
-                <div class="mt-6 grid grid-cols-2 gap-3">
-                    <div>
-                        <a href="#" class="w-full inline-flex justify-center py-3 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
-                            <img src="https://www.google.com/favicon.ico" alt="Google" class="h-5 w-5">
-                            <span class="ml-2">Google</span>
-                        </a>
-                    </div>
-                    <div>
-                        <a href="#" class="w-full inline-flex justify-center py-3 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
-                            <img src="https://github.com/favicon.ico" alt="GitHub" class="h-5 w-5">
-                            <span class="ml-2">GitHub</span>
-                        </a>
-                    </div>
-                </div>
+            <!-- Toggle Button -->
+            <div class="mt-6 text-center">
+                <button 
+                    onclick="toggleForm()"
+                    id="toggleButton"
+                    class="text-sm text-blue-600 hover:text-blue-500"
+                >
+                    Don't have an account? Sign up
+                </button>
             </div>
         </div>
     </div>
 
     <script>
-        function togglePassword() {
-            const passwordInput = document.getElementById('password');
-            if (passwordInput.type === 'password') {
-                passwordInput.type = 'text';
+        let isLogin = true;
+        
+        function toggleForm() {
+            isLogin = !isLogin;
+            const form = document.getElementById('authForm');
+            const title = document.getElementById('formTitle');
+            const subtitle = document.getElementById('formSubtitle');
+            const submitButton = document.getElementById('submitButton');
+            const toggleButton = document.getElementById('toggleButton');
+            const confirmPasswordDiv = document.getElementById('confirmPasswordDiv');
+            const confirmPasswordInput = document.getElementById('confirmPassword');
+            
+            if (isLogin) {
+                form.action = "/login";
+                title.textContent = "Sign in to PhishingShield";
+                subtitle.textContent = "Access advanced phishing detection tools";
+                submitButton.textContent = "Sign in";
+                toggleButton.textContent = "Don't have an account? Sign up";
+                confirmPasswordDiv.style.display = "none";
+                confirmPasswordInput.required = false;
             } else {
-                passwordInput.type = 'password';
+                form.action = "/signup";
+                title.textContent = "Create your account";
+                subtitle.textContent = "Join us to protect against phishing";
+                submitButton.textContent = "Sign up";
+                toggleButton.textContent = "Already have an account? Sign in";
+                confirmPasswordDiv.style.display = "block";
+                confirmPasswordInput.required = true;
             }
         }
     </script>
