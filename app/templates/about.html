@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - PhishingShield</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .bg-coral { background-color: #FF6B6B; }
+        .bg-light-coral { background-color: #FFE5E5; }
+        .text-coral { color: #FF6B6B; }
+        .hover\:text-coral:hover { color: #FF6B6B; }
+        .hover\:bg-coral:hover { background-color: #FF6B6B; }
+    </style>
+</head>
+<body class="bg-light-coral">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex items-center space-x-8">
+                    <a href="/" class="flex items-center">
+                        <img src="{{ url_for('static', filename='images/phis.png') }}" 
+                             alt="PhishingShield" 
+                             class="h-10 w-auto">
+                        <span class="ml-3 text-2xl font-bold text-gray-800">PhishingShield</span>
+                    </a>
+                    <a href="/" class="text-gray-600 hover:text-coral transition-colors flex items-center">
+                        <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                  d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                        </svg>
+                        Home
+                    </a>
+                </div>
+                <div class="flex items-center space-x-8">
+                    <a href="/about" class="text-coral">About</a>
+                    <a href="/contact" class="text-gray-600 hover:text-coral transition-colors">Contact</a>
+                    <a href="/login" class="text-white bg-coral px-6 py-2 rounded-lg hover:bg-coral/90 transition-colors">Login</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto py-12 px-6">
+        <!-- Introduction -->
+        <div class="max-w-4xl mx-auto mb-16">
+            <h1 class="text-4xl font-bold text-gray-900 mb-6">Understanding Phishing Attacks</h1>
+            <p class="text-lg text-gray-600">
+                Phishing is a cybercrime where attackers deceive victims into revealing sensitive information by posing as legitimate entities. These attacks have become increasingly sophisticated, targeting individuals, businesses, and organizations worldwide.
+            </p>
+        </div>
+
+        <!-- Types of Phishing Section -->
+        <div class="bg-white rounded-2xl shadow-xl p-8 mb-12">
+            <h2 class="text-2xl font-bold text-gray-900 mb-8">Types of Phishing Attacks</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-light-coral rounded-xl p-6">
+                    <h3 class="text-xl font-bold text-coral mb-4">Email Phishing</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>• Fake login pages</li>
+                        <li>• Account verification scams</li>
+                        <li>• Payment fraud attempts</li>
+                        <li>• Credential harvesting</li>
+                    </ul>
+                </div>
+
+                <div class="bg-light-coral rounded-xl p-6">
+                    <h3 class="text-xl font-bold text-coral mb-4">Spear Phishing</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>• Targeted attacks</li>
+                        <li>• Company-specific scams</li>
+                        <li>• Executive targeting</li>
+                        <li>• Social engineering</li>
+                    </ul>
+                </div>
+
+                <div class="bg-light-coral rounded-xl p-6">
+                    <h3 class="text-xl font-bold text-coral mb-4">Smishing & Vishing</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>• SMS-based attacks</li>
+                        <li>• Voice phishing calls</li>
+                        <li>• Mobile malware</li>
+                        <li>• Text message scams</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Statistics Section -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            <div class="bg-white rounded-2xl shadow-xl p-8">
+                <h3 class="text-2xl font-bold text-gray-900 mb-6">Phishing Attack Distribution</h3>
+                <canvas id="phishingTypesChart"></canvas>
+            </div>
+            <div class="bg-white rounded-2xl shadow-xl p-8">
+                <h3 class="text-2xl font-bold text-gray-900 mb-6">Attack Trends Over Time</h3>
+                <canvas id="yearlyTrendsChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Prevention Methods -->
+        <div class="bg-white rounded-2xl shadow-xl p-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-8">Protection Methods</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold text-coral mb-4">Technical Measures</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>• Email filtering systems</li>
+                        <li>• Two-factor authentication</li>
+                        <li>• Regular software updates</li>
+                        <li>• Anti-phishing tools</li>
+                        <li>• Security monitoring</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold text-coral mb-4">Best Practices</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>• Verify sender identities</li>
+                        <li>• Check URLs carefully</li>
+                        <li>• Never share passwords</li>
+                        <li>• Report suspicious activities</li>
+                        <li>• Use strong passwords</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold text-coral mb-4">Employee Training</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>• Security awareness programs</li>
+                        <li>• Regular phishing simulations</li>
+                        <li>• Incident response training</li>
+                        <li>• Security best practices</li>
+                        <li>• Regular updates on threats</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Attack Distribution Chart
+        const attackCtx = document.getElementById('phishingTypesChart').getContext('2d');
+        new Chart(attackCtx, {
+            type: 'pie',
+            data: {
+                labels: ['Email Phishing', 'Spear Phishing', 'Smishing', 'Vishing', 'Whaling', 'Others'],
+                datasets: [{
+                    data: [40, 25, 15, 10, 5, 5],
+                    backgroundColor: [
+                        '#FF6B6B',
+                        '#4ECDC4',
+                        '#45B7D1',
+                        '#96CEB4',
+                        '#FFEEAD',
+                        '#D4A5A5'
+                    ]
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+
+        // Yearly Trends Chart
+        const trendCtx = document.getElementById('yearlyTrendsChart').getContext('2d');
+        new Chart(trendCtx, {
+            type: 'line',
+            data: {
+                labels: ['2019', '2020', '2021', '2022', '2023', '2024'],
+                datasets: [{
+                    label: 'Phishing Incidents (Thousands)',
+                    data: [250, 320, 450, 520, 680, 750],
+                    borderColor: '#FF6B6B',
+                    tension: 0.1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

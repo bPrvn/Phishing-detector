@@ -1,0 +1,40 @@
+1. Popular Websites:
+- https://www.google.com
+- https://www.microsoft.com
+- https://www.amazon.com
+- https://www.facebook.com
+
+2. Educational Sites:
+- https://www.harvard.edu
+- https://www.mit.edu
+- https://www.stanford.edu
+
+3. Government Sites:
+- https://www.usa.gov
+- https://www.nasa.gov
+
+
+1. Fake Banking:
+- http://secure-banking-login.xyz
+- https://mybank-account-verify.net
+- +++++++
+
+2. Payment Service Imitations:
+- http://paypal-secure-verification.com
+- https://verify-payment-account.net
+- http://secure-payment-update.info
+
+3. Email Provider Fakes:
+- http://gmail-account-verify.xyz
+- https://outlook-security-update.net
+- http://mail-password-reset.info
+
+4. Social Media Imitations:
+- http://facebook-login-secure.com
+- https://instagram-verify-account.net
+- http://twitter-account-security.xyz
+
+5. URLs with Suspicious Patterns:
+- http://login@secure-payment.com
+- https://192.168.1.1/login.php
+- http://secure.bank.com.suspicious.domain.xyz

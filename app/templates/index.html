@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhishingShield - Detection System</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .bg-coral { background-color: #FF6B6B; }
+        .bg-light-coral { background-color: #FFE5E5; }
+        .text-coral { color: #FF6B6B; }
+        .hover\:text-coral:hover { color: #FF6B6B; }
+        .hover\:bg-coral:hover { background-color: #FF6B6B; }
+    </style>
+</head>
+<body class="bg-light-coral min-h-screen">
+    <!-- Updated Navigation -->
+    <nav class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex items-center space-x-8">
+                    <a href="/" class="flex items-center">
+                        <img src="{{ url_for('static', filename='images/phis.png') }}" 
+                             alt="PhishingShield" 
+                             class="h-10 w-auto">
+                        <span class="ml-3 text-2xl font-bold text-gray-800">PhishingShield</span>
+                    </a>
+                    <a href="/" class="text-coral hover:text-coral/80 transition-colors flex items-center">
+                        <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                  d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                        </svg>
+                        Home
+                    </a>
+                </div>
+                <div class="flex items-center space-x-8">
+                    <a href="/about" class="text-gray-600 hover:text-coral transition-colors">About</a>
+                    <a href="/contact" class="text-gray-600 hover:text-coral transition-colors">Contact</a>
+                    <a href="/login" class="text-white bg-coral px-6 py-2 rounded-lg hover:bg-coral/90 transition-colors">Login</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Rest of your index.html content -->
+    <main class="pt-32 pb-16">
+        <div class="max-w-7xl mx-auto px-6">
+            <!-- Hero Section -->
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h1 class="text-6xl font-bold text-gray-900 mb-6">
+                    Advanced Phishing Detection
+                </h1>
+                <p class="text-xl text-gray-600">
+                    Protect yourself from phishing attacks with our advanced machine learning system
+                </p>
+            </div>
+
+            <!-- URL Checker Form -->
+            <div class="max-w-2xl mx-auto">
+                <div class="bg-white rounded-2xl shadow-xl p-8">
+                    <form action="{{ url_for('analyze') }}" method="POST" class="space-y-6">
+                        <div>
+                            <label for="url" class="block text-lg font-medium text-gray-700 mb-2">
+                                Enter URL to Check
+                            </label>
+                            <input 
+                                type="url" 
+                                id="url"
+                                name="url" 
+                                required 
+                                class="w-full px-6 py-4 bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-coral focus:border-coral transition-all text-gray-800 text-lg"
+                                placeholder="https://example.com"
+                            >
+                        </div>
+                        <button 
+                            type="submit" 
+                            class="w-full bg-coral text-white py-4 px-6 rounded-lg hover:bg-coral/90 transition-all text-lg font-medium"
+                        >
+                            Analyze URL
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Features Section -->
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="bg-white/10 rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                        <svg class="w-8 h-8 text-coral" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Real-time Detection</h3>
+                    <p class="text-gray-600">Instant analysis of potential phishing threats</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="bg-white/10 rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                        <svg class="w-8 h-8 text-coral" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Machine Learning</h3>
+                    <p class="text-gray-600">Advanced AI-powered analysis</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="bg-white/10 rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                        <svg class="w-8 h-8 text-coral" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Detailed Reports</h3>
+                    <p class="text-gray-600">Comprehensive security analysis</p>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
